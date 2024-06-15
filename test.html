@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>選択式フォームとスタイル変更</title>
+
+    <style>
+        /* 初期スタイル */
+        .options {
+            background-image: url('couchBeck.jpg'); /* デフォルトの背景画像のパスを指定してください */
+            background-size: cover;
+            width: 200px; /* 選択ボックスの幅を設定 */
+            height: 40px; /* 選択ボックスの高さを設定 */
+            border: none;
+            outline: none;
+        }
+
+        #output {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>選択式フォームとスタイル変更</h2>
+
+    <form id="myForm">
+        <label for="options">選択してください:</label>
+        <select class="options" name="options">
+            <option value="option1" selected>オプション1</option>
+            <option value="option2">オプション2</option>
+            <option value="option3">オプション3</option>
+        </select>
+
+        <button type="button" onclick="changeStyle()">スタイル変更</button>
+    </form>
+
+    <div id="output"></div>
+
+    <script>
+        function changeStyle() {
+            // フォームから選択された値を取得
+            var selectedOption = document.getElementById("options").value;
+
+            // スタイルを変更する要素を取得
+            var optionsElement = document.getElementById("options");
+
+            // 選択されたオプションによって背景画像を変更
+            switch (selectedOption) {
+                case "option1":
+                    optionsElement.style.backgroundImage = "url('couchBeck.jpg')"; // オプション1の場合の背景画像のパスを指定してください
+                    break;
+                case "option2":
+                    optionsElement.style.backgroundImage = "url('cat.jpg')"; // オプション2の場合の背景画像のパスを指定してください
+                    break;
+                case "option3":
+                    optionsElement.style.backgroundImage = "url('rabbit.jpg')"; // オプション3の場合の背景画像のパスを指定してください
+                    break;
+                default:
+                    optionsElement.style.backgroundImage = "url('couchBeck.jpg')"; // デフォルトの背景画像のパスを指定してください
+            }
+
+            // 結果を表示するための要素に挿入
+            var outputElement = document.getElementById("output");
+            outputElement.innerHTML = "選択されたオプション: " + selectedOption;
+        }
+    </script>
+
+</body>
+</html>
